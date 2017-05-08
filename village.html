@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<script type="text/javascript">
+
+		function validate(){
+
+			var p1 = document.forms["register"]["password1"].value;
+
+			var p2 = document.forms["register"]["password2"].value;
+
+			if(p1!=p2){
+
+				alert("The passwords don't match. Please retry!");
+
+				return false;
+
+			}
+
+			var d = document.forms["register"]["date"].value;
+
+			if(d.checkValidity()==false){
+
+				alert("The date of birth has an incorrect format. Please retry!");
+
+				return false;	
+
+			}
+
+			var user = document.forms["register"]["username"].value;
+
+			for(i=0;i<user.length;++i){
+
+				if(!(user[i]>='a' && user[i]<='z' || user[i]>='A' && user[i]<='Z' || user[i]=='.') || user.length<5){
+
+					alert("Invalide username! Select a username 5 to 30 characters long consisting only of alphabets, numbers and period('.')");
+
+					return false;
+
+				}
+
+			}
+
+			if(p1.length<5 || p1==user){
+
+				alert("Invalid password! Select a password atlease 5 characters long, different from username!");
+
+				return false;	
+
+			}	
+
+			return true;
+
+		}
+
+	</script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+<style type="text/css">
+
+/*Remove that CSS*/
+
+body{
+	background-image: url("13.jpg");
+}
+.col-md-3 {
+
+    margin-left:5%;
+
+    }
+
+/*Remove that CSS*/
+
+button {
+
+  margin: 20px 0;
+
+  line-height: 34px;
+
+  position: relative;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  outline:none !important;
+
+  width:100%;
+
+}
+
+button:active {
+
+  outline:none;
+
+}
+
+button.ribbon {
+
+  
+
+  outline:none;
+
+  outline-color: transparent;
+
+}
+
+button.ribbon:before, button.ribbon:after {
+
+  top: 5px;
+
+  z-index: -10;
+
+}
+
+button.ribbon:before {
+
+  border-color: #53dab6 #53dab6 #53dab6 transparent;
+
+  left: -25px;
+
+  border-width: 17px;
+
+}
+
+button.ribbon:after {
+
+  border-color: #53dab6 transparent #53dab6 #53dab6;
+
+  right: -25px;
+
+  border-width: 17px;
+
+}
+
+button:before, button:after {
+
+  content: '';
+
+  position: absolute;
+
+  height: 0;
+
+  width: 0;
+
+  border-style: solid;
+
+  border-width: 0;
+
+  outline:none;
+
+}
+
+button.btn-default:before {
+
+  border-color: #757575 #757575 #757575 transparent;
+
+    }
+
+    button.btn-default:after {
+
+  border-color: #757575 transparent #757575 #757575;
+
+    }
+
+    
+
+    
+
+    
+
+    button.btn-primary:before {
+
+  border-color: #2e6da4 #2e6da4 #2e6da4 transparent;
+
+    }
+
+    button.btn-primary:after {
+
+  border-color: #2e6da4 transparent #2e6da4 #2e6da4;
+
+    }
+
+    
+
+    
+
+    button.btn-success:before {
+
+  border-color: #398439 #398439 #398439 transparent;
+
+    }
+
+    button.btn-success:after {
+
+  border-color: #398439 transparent #398439 #398439;
+
+    }
+
+    
+
+    
+
+    button.btn-info:before {
+
+  border-color: #269abc #269abc #269abc transparent;
+
+    }
+
+    button.btn-info:after {
+
+  border-color: #269abc transparent #269abc #269abc;
+
+    }
+
+    
+
+    
+
+    button.btn-warning:before {
+
+  border-color: #d58512 #d58512 #d58512 transparent;
+
+    }
+
+    button.btn-warning:after {
+
+  border-color: #d58512 transparent #d58512 #d58512;
+
+    }
+
+    
+
+    
+
+    button.btn-danger:before {
+
+  border-color: #ac2925 #ac2925 #ac2925 transparent;
+
+    }
+
+    button.btn-danger:after {
+
+  border-color: #ac2925 transparent #ac2925 #ac2925;
+
+    }
+
+    
+
+    
+
+</style>
+
+	<title>
+
+		Farmer Form
+
+	</title>
+
+</head>
+
+<body>
+
+<center>
+
+<div class="container">	
+
+    
+
+    <div class="row">
+
+    
+
+    <div class="col-lg-16">       <!-- Standard button -->
+
+<button type="button" class="btn btn-info ribbon" align="center"><h4>Farmer Form</h4></button>
+
+
+
+
+
+</div>
+
+    
+
+ 
+
+    </div>
+
+    
+
+  </div>  
+
+</center>
+
+<br>
+
+<form method="post" class="form-horizontal" action="village.php" onsubmit="return validate()" name="register">
+
+<fieldset>
+
+
+<div class="form-group">
+
+  <label class="col-md-4 control-label" for="paddress">Select Village</label>  
+
+  <div class="col-md-4">
+
+  <select name="paddress">
+
+    <option value="Kamand">Kamand</option>
+
+    <option value="Salgi">Salgi</option>
+
+    <option value="Katola" selected>Katola</option>
+
+    <option value="Navlaya">Navlaya</option>
+
+	<option value="Katindi">Katindi</option>
+
+    <option value="Riyagadi">Riyagadi</option>
+
+    <option value="Drang" selected>Drang</option>
+
+    <option value="Triyambali">Triaymbali</option>
+
+  </select>
+
+  </div>
+
+</div>
+
+
+<!-- Button -->
+
+<div class="form-group">
+
+  <label class="col-md-4 control-label" for="submit"></label>
+
+  <div class="col-md-4">
+
+    <button id="submit" name="submit" class="btn btn-success">submit</button>
+
+  </div>
+
+</div>
+
+
+
+</fieldset>
+
+</form>
+
+
+
+ 
+
+</body>
+
+</html>
